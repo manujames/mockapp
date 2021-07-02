@@ -12,4 +12,8 @@ export class ContentService {
   getUsers(){
     return this.http.get(`${this.api}/MockUser`);
   }
+
+  getSingleUser(id:any){
+    return this.http.get(`${this.api}/MockUser/${id}`);
+  }
 }
