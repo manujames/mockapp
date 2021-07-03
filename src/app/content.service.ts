@@ -16,4 +16,12 @@ export class ContentService {
   getSingleUser(id:any){
     return this.http.get(`${this.api}/MockUser/${id}`);
   }
+
+  addUser(user:any){
+    return this.http.post<any>(`${this.api}/MockUser`,user);
+  }
+
+  deleteUser(id:any){
+    return this.http.delete(`${this.api}/MockUser/delete/${id}`);
+  }
 }

@@ -38,4 +38,16 @@ export class UsersComponent implements AfterViewInit {
       }
     );
   }
+
+  delete(id:any){
+    this.content.deleteUser(id)
+    .subscribe(
+      data=>{
+        console.log(data);
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
 }

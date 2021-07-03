@@ -13,12 +13,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ProfileComponent } from './profile/profile.component';
 import { MatCardModule } from '@angular/material/card';
+import { AddUserComponent } from './add-user/add-user.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddUserComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +38,11 @@ import { MatCardModule } from '@angular/material/card';
     MatSortModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
