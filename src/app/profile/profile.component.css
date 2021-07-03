@@ -1,8 +1,13 @@
 .profile-card {
-    max-width: 400px;
+    width: 400px;
 }
   
 .profile-header-image {
     background-image: url('/assets/img/person1.png');
     background-size: cover;
+}
+
+.content-center{
+    display:flex;
+    justify-content: center;
 }

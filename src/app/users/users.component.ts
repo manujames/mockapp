@@ -1,7 +1,10 @@
+import { componentFactoryName } from '@angular/compiler';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { ContentService } from '../content.service';
 import { UsersDataSource, UsersItem } from './users-datasource';
 
@@ -19,15 +22,20 @@ export class UsersComponent implements AfterViewInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['userName', 'email', 'phone', 'gender', 'age', 'delete'];
 
-  constructor(private content:ContentService) {
-    
-  }
+  constructor(
+    private content:ContentService,
+    private snackBar:MatSnackBar
+  ) { }
 
   ngOnInit():void {
     
   }
 
   ngAfterViewInit(): void {
+    this.loadContent();
+  }
+
+  loadContent(){
     this.content.getUsers()
     .subscribe(
       (users:any)=>{
@@ -43,10 +51,17 @@ export class UsersComponent implements AfterViewInit {
     this.content.deleteUser(id)
     .subscribe(
       data=>{
-        console.log(data);
+        this.snackBar.open("Deleted user!",'',{duration:3000});
+        this.loadContent();
       },
       error=>{
-        console.log(error);
+        if(error.status == 404){
+          this.snackBar.open(error.statusText,'',{duration:3000});
+          this.loadContent();
+        }
+        else{
+          this.snackBar.open('Sorry, Something went wrong.','',{duration:3000});
+        }
       }
     )
   }

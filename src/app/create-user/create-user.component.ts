@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { ContentService } from '../content.service';
 
 @Component({
@@ -9,7 +11,12 @@ import { ContentService } from '../content.service';
 })
 export class CreateUserComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private content:ContentService) { }
+  constructor(
+    private fb:FormBuilder,
+    private content:ContentService,
+    private router:Router,
+    private snackBar:MatSnackBar
+  ) { }
 
   userForm = this.fb.group({
     userName: ['',[Validators.required, Validators.maxLength(50)]],
@@ -40,10 +47,11 @@ export class CreateUserComponent implements OnInit {
     this.content.addUser(this.user)
     .subscribe(
       data=>{
-        console.log(data);
+        this.snackBar.open("Added user!",'',{duration:3000});
+        this.router.navigate(['/']);
       },
       error=>{
-        (console.log(error));
+        this.snackBar.open('Sorry, Something went wrong.','',{duration:3000});
       }
     );
   }

@@ -1,1 +1,25 @@
-<router-outlet></router-outlet>
+<!-- <mat-grid-list cols="12" rowHeight="1vh" gutterSize="1px">
+    <mat-grid-tile rowspan="15" colspan="12" style="background:'lightblue';">
+        Top navbar
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="72" colspan="2" style="background:'lightgreen';">
+        left
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="72" colspan="8" style="background:'lightpink';">
+        
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="72" colspan="2" style="background:'lightgreen';">
+        right
+    </mat-grid-tile>
+</mat-grid-list> -->
+
+<mat-toolbar class="navbar" color="primary">
+    <div>Mock App</div>
+    <div>
+        <a routerLink="/"><button mat-raised-button color="accent">Users List</button></a>
+        <a routerLink="/create-user"><button mat-raised-button color="accent">Add New User</button></a>
+    </div>
+</mat-toolbar>
+<div class="content">
+    <router-outlet></router-outlet>
+</div>

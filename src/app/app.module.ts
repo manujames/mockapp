@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,20 +14,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ProfileComponent } from './profile/profile.component';
 import { MatCardModule } from '@angular/material/card';
-import { AddUserComponent } from './add-user/add-user.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule } from '@angular/material/radio';
-import { ReactiveFormsModule } from '@angular/forms';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     ProfileComponent,
-    AddUserComponent,
-    CreateUserComponent
+    CreateUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,8 +41,10 @@ import { CreateUserComponent } from './create-user/create-user.component';
     MatCardModule,
     MatInputModule,
     MatSelectModule,
-    MatRadioModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
