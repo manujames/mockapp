@@ -3,31 +3,26 @@
         <mat-card-header>
             <div mat-card-avatar class="profile-header-image"></div>
             <mat-card-title>Profile</mat-card-title>
-            <mat-card-subtitle>{{user.userName}}</mat-card-subtitle>
+            <mat-card-subtitle>{{data.userName}}</mat-card-subtitle>
         </mat-card-header>
         <div class="content-center">
             <img mat-card-image src="/assets/img/person2.png" style="width: 200px; height: 200px;" alt="Icon of a person">
         </div>
         <mat-card-content>
             <p>
-                User Name: {{user.userName}}
+                User Name: {{data.userName}}
                 <br>
-                Email: {{user.email}}
+                Email: {{data.email}}
                 <br>
-                Phone: {{user.phone}}
+                Phone: {{data.phone}}
                 <br>
-                Gender: {{user.gender}}
+                Gender: {{data.gender}}
                 <br>
-                Age: {{user.age}}
+                Age: {{data.age}}
             </p>
         </mat-card-content>
         <mat-card-actions class="content-center">
-            <a routerLink="/" mat-raised-button color="primary" aria-label="Back button">
-                Back
-            </a>
-            <button (click)=deleteUser(user.id) mat-raised-button color="warn" aria-label="Delete User">
-                Delete
-            </button>
+            <button mat-raised-button mat-dialog-close>Close</button>
         </mat-card-actions>
     </mat-card>
 </div>

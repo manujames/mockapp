@@ -1,11 +1,13 @@
 import { componentFactoryName } from '@angular/compiler';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { ContentService } from '../content.service';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { ProfileComponent } from '../profile/profile.component';
 import { UsersDataSource, UsersItem } from './users-datasource';
 
 @Component({
@@ -24,7 +26,8 @@ export class UsersComponent implements AfterViewInit {
 
   constructor(
     private content:ContentService,
-    private snackBar:MatSnackBar
+    private snackBar:MatSnackBar,
+    private dialog:MatDialog
   ) { }
 
   ngOnInit():void {
@@ -48,13 +51,28 @@ export class UsersComponent implements AfterViewInit {
   }
 
   delete(id:any){
-    this.content.deleteUser(id)
+    const dialogRef = this.dialog.open(DeleteDialogComponent,{
+      data:{id:id}
+    });
+    dialogRef.afterClosed()
     .subscribe(
       data=>{
-        this.snackBar.open("Deleted user!",'',{duration:3000});
-        this.loadContent();
+        if(data.event == 'delete' || data.event == '404'){
+          this.loadContent();
+        }
+      }
+    )
+  }
+
+  showUserProfile(id:any){
+    this.content.getSingleUser(id)
+    .subscribe(
+      (user:any)=>{
+        this.dialog.open(ProfileComponent,{
+          data:user.data
+        });
       },
-      error=>{
+      (error)=>{
         if(error.status == 404){
           this.snackBar.open(error.statusText,'',{duration:3000});
           this.loadContent();
@@ -63,6 +81,6 @@ export class UsersComponent implements AfterViewInit {
           this.snackBar.open('Sorry, Something went wrong.','',{duration:3000});
         }
       }
-    )
+    );
   }
 }

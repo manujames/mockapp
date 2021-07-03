@@ -20,6 +20,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     UsersComponent,
     ProfileComponent,
     CreateUserComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatGridListModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
